@@ -5,12 +5,12 @@ import java.sql.Timestamp
 
 import org.apache.flink.api.common.serialization.{DeserializationSchema, SerializationSchema}
 import org.apache.flink.api.common.typeinfo.TypeInformation
+import java.io.ObjectOutputStream
 
 case class News(id:String,title:String,date:Timestamp)
 
 class NewsSerializer extends SerializationSchema[News]{
 
-  import java.io.ObjectOutputStream
   override def serialize(element: News): Array[Byte] ={
     val bos = new ByteArrayOutputStream
     val oos = new ObjectOutputStream(bos)
