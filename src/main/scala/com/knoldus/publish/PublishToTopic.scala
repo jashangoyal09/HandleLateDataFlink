@@ -30,13 +30,13 @@ class DataGenerator extends RichParallelSourceFunction[News] {
 
   override def run(ctx: SourceFunction.SourceContext[News]): Unit = {
 
-    val random = new Random(27)
+    val random = new Random()
     println("Producing Data...")
     while (run) {
       val instant = new Timestamp(System.currentTimeMillis())
       val uuid = UUID.randomUUID().toString
-      val title = "titleName " + ('a' + random.nextInt())
-      ctx.collect(News(uuid, title, instant))
+      val title = "titleName " + ('a' + random.nextPrintableChar)
+      ctx.collect(News(uuid, title, instant,random.nextInt(10)))
       Thread.sleep(5000)
     }
   }

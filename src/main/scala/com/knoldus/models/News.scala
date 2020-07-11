@@ -7,7 +7,7 @@ import org.apache.flink.api.common.serialization.{DeserializationSchema, Seriali
 import org.apache.flink.api.common.typeinfo.TypeInformation
 import java.io.ObjectOutputStream
 
-case class News(id:String,title:String,date:Timestamp)
+case class News(id:String,title:String,date:Timestamp,priority:Int)
 
 class NewsSerializer extends SerializationSchema[News]{
 
